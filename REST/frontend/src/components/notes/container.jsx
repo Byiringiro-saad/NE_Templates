@@ -1,5 +1,7 @@
 /* eslint-disable react/prop-types */
 
+import { useEffect, useState } from "react";
+
 //styles
 import styles from "./container.module.scss";
 
@@ -7,12 +9,21 @@ import styles from "./container.module.scss";
 import Box from "./box";
 
 const Container = ({ notes }) => {
+  const [untrashed, setUntrashed] = useState([]);
+
+  useEffect(() => {
+    const untrashedNotes = notes?.filter((note) => !note?.trash);
+    setUntrashed(untrashedNotes);
+  }, [notes]);
+
   return (
     <div className={styles.container}>
-      {notes?.map((note) => (
+      {untrashed?.map((note) => (
         <Box key={note._id} note={note} />
       ))}
-      {notes?.length === 0 && <p className={styles.empty}>No notes here!</p>}
+      {untrashed?.length === 0 && (
+        <p className={styles.empty}>No notes here!</p>
+      )}
     </div>
   );
 };

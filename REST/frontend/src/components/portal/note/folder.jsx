@@ -14,16 +14,43 @@ import loader from "../../../assets/loader.svg";
 //features
 import axios from "../../../features/axios";
 
-const ChooseFolder = ({ close }) => {
+const ChooseFolder = ({ close, id }) => {
   const [folders, setFolders] = useState([]);
   const [loading, setLoading] = useState(false);
-  const [selectedFolder, setSelectedFolder] = useState(null);
 
   const { register, handleSubmit } = useForm();
 
   const onSubmit = (data) => {
     setLoading(true);
+
+    const folder = folders.find((folder) => folder?.name === data?.folder);
+
     console.log(data);
+
+    axios
+      .put(
+        `/notes/${id}`,
+        {
+          folder: folder?._id,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+        }
+      )
+      .then((res) => {
+        toast.success("Note added to folder!");
+        setTimeout(() => {
+          close();
+        }, 2000);
+      })
+      .catch((err) => {
+        toast.error("Something went wrong!");
+      })
+      .finally(() => {
+        setLoading(false);
+      });
   };
 
   useEffect(() => {
@@ -59,8 +86,8 @@ const ChooseFolder = ({ close }) => {
                 required: true,
               })}
             >
-              {folders.map((folder, index) => (
-                <option key={index} value="one">
+              {folders.map((folder) => (
+                <option key={folder?._id} value={folder?.name}>
                   {folder?.name}
                 </option>
               ))}

@@ -20,6 +20,7 @@ const Folder = () => {
   const [folder, setFolder] = useState({});
 
   useEffect(() => {
+    setFolder({});
     axios
       .get(`/folders/${params.id}`, {
         headers: {

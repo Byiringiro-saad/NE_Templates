@@ -37,7 +37,7 @@ exports.createNote = async (req, res) => {
 
 exports.getNotes = async (req, res) => {
   try {
-    const notes = await Note.find({ user: req.user.id });
+    const notes = await Note.find({ user: req.user.id, trash: false });
 
     res.status(200).json({
       status: "success",
@@ -109,6 +109,25 @@ exports.addNoteToFolder = async (req, res) => {
     );
 
     res.status(200).json({
+      status: "success",
+    });
+  } catch (err) {
+    res.status(500).json({
+      status: "error",
+      message: err.message,
+    });
+  }
+};
+
+exports.deleteNote = async (req, res) => {
+  const data = {
+    id: req.params.id,
+  };
+
+  try {
+    await Note.findByIdAndUpdate(data?.id, { trash: true });
+
+    return res.status(200).json({
       status: "success",
     });
   } catch (err) {
