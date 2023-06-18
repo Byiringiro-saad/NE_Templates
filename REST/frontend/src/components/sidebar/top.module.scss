@@ -1,0 +1,40 @@
+.container {
+  width: 100%;
+  height: auto;
+  margin: 10px 0 30px 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  cursor: pointer;
+
+  .one {
+    width: 48%;
+    height: 70px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+    background: var(--background);
+
+    .white {
+      font-size: 1.5em;
+      color: var(--white);
+    }
+
+    .bright {
+      font-size: 1.8em;
+      color: var(--bright);
+    }
+
+    p.title {
+      font-size: 1.2em;
+      color: var(--white);
+      margin: 0 10px 0 10px;
+    }
+
+    p.num {
+      color: var(--gray);
+    }
+  }
+}

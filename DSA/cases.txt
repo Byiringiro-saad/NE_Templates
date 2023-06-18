@@ -1,0 +1,5 @@
+1 kigali malaria 150
+2 bugesera kk 200
+3 nyabihu physics 120
+4 kigali kk 200
+5 nyabihu kk 300

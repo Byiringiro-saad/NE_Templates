@@ -1,0 +1,52 @@
+.container {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  position: relative;
+  align-items: center;
+  justify-content: center;
+
+  .one {
+    width: 200px;
+    height: auto;
+    position: absolute;
+    left: 0;
+    bottom: 150px;
+
+    img {
+      width: 100%;
+    }
+  }
+
+  .content {
+    width: 400px;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .logo {
+      width: 130px;
+      height: auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      img {
+        width: 100%;
+      }
+    }
+  }
+
+  .two {
+    width: 300px;
+    height: auto;
+    position: absolute;
+    right: 0;
+    top: 150px;
+
+    img {
+      width: 100%;
+    }
+  }
+}

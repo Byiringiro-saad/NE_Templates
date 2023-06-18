@@ -1,0 +1,12 @@
+.container {
+  width: 100%;
+  height: auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 20px;
+
+  p.empty {
+    margin: 0 10px;
+    color: var(--gray);
+  }
+}
