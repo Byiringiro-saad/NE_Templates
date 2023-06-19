@@ -9,6 +9,7 @@ const Note = require("../models/note.model");
 const { createToken } = require("../services/user.services");
 
 exports.signup = async (req, res) => {
+  // #swagger.tags = ['User']
   const data = {
     email: req.body.email,
     username: req.body.username,
@@ -55,6 +56,7 @@ exports.signup = async (req, res) => {
 };
 
 exports.login = async (req, res) => {
+  // #swagger.tags = ['User']
   const data = {
     email: req.body.email,
     password: req.body.password,
@@ -105,6 +107,8 @@ exports.login = async (req, res) => {
 };
 
 exports.info = async (req, res) => {
+  // #swagger.tags = ['User']
+
   //number of notes
   const notes = await Note.find({ user: req.user.id, trash: false });
   const notesCount = notes.length;
@@ -123,6 +127,7 @@ exports.info = async (req, res) => {
 };
 
 exports.trash = async (req, res) => {
+  // #swagger.tags = ['User']
   try {
     const notes = await Note.find({ user: req.user.id, trash: true });
 

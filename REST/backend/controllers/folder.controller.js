@@ -5,6 +5,7 @@ const Note = require("../models/note.model");
 const Folder = require("../models/folder.model");
 
 exports.createFolder = async (req, res) => {
+  // #swagger.tags = ['Folder']
   const data = {
     name: req.body.name,
     color: req.body.color,
@@ -43,6 +44,7 @@ exports.createFolder = async (req, res) => {
 };
 
 exports.getFolders = async (req, res) => {
+  // #swagger.tags = ['Folder']
   try {
     const folders = await Folder.find({ user: req.user.id }).populate("notes");
 
@@ -59,6 +61,7 @@ exports.getFolders = async (req, res) => {
 };
 
 exports.getFolder = async (req, res) => {
+  // #swagger.tags = ['Folder']
   try {
     const folder = await Folder.findOne({
       _id: req.params.id,
@@ -85,6 +88,7 @@ exports.getFolder = async (req, res) => {
 };
 
 exports.getNotes = async (req, res) => {
+  // #swagger.tags = ['Folder']
   try {
     const notes = await Note.find({ user: req.user.id, folder: req.params.id });
 

@@ -2,6 +2,7 @@ const Note = require("../models/note.model");
 const Folder = require("../models/folder.model");
 
 exports.createNote = async (req, res) => {
+  // #swagger.tags = ['Note']
   const data = {
     title: req.body.title,
     folder: req.body?.folder,
@@ -36,6 +37,7 @@ exports.createNote = async (req, res) => {
 };
 
 exports.getNotes = async (req, res) => {
+  // #swagger.tags = ['Note']
   try {
     const notes = await Note.find({ user: req.user.id, trash: false });
 
@@ -52,6 +54,7 @@ exports.getNotes = async (req, res) => {
 };
 
 exports.getNote = async (req, res) => {
+  // #swagger.tags = ['Note']
   try {
     const note = await Note.findById(req.params.id);
 
@@ -75,6 +78,7 @@ exports.getNote = async (req, res) => {
 };
 
 exports.addNoteToFolder = async (req, res) => {
+  // #swagger.tags = ['Note']
   const data = {
     folder: req.body.folder,
   };
@@ -120,6 +124,7 @@ exports.addNoteToFolder = async (req, res) => {
 };
 
 exports.deleteNote = async (req, res) => {
+  // #swagger.tags = ['Note']
   const data = {
     id: req.params.id,
   };

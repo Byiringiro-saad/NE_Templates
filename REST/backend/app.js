@@ -1,11 +1,15 @@
 const cors = require("cors");
 const morgan = require("morgan");
 const express = require("express");
+const swaggerUi = require("swagger-ui-express");
 
 //routers
 const userRouter = require("./routes/user.routes");
 const noteRouter = require("./routes/note.routes");
 const folderRouter = require("./routes/folder.routes");
+
+//files
+const swaggerFile = require("./swagger.json");
 
 const app = express();
 
@@ -22,6 +26,8 @@ require("./features/db.feature");
 app.use("/users", userRouter);
 app.use("/notes", noteRouter);
 app.use("/folders", folderRouter);
+
+app.use("/doc", swaggerUi.serve, swaggerUi.setup(swaggerFile));
 
 //error handler
 app.use((err, req, res, next) => {

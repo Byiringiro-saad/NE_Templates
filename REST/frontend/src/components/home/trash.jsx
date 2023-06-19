@@ -7,11 +7,14 @@ import styles from "./home.module.scss";
 
 //components
 import Container from "../notes/container";
+import axios from "../../features/axios";
 
 const Trash = () => {
   const [notes, setNotes] = useState([]);
 
-  useEffect(() => {}, []);
+  useEffect(() => {
+    axios.get("/notes/trash").then((res) => {});
+  }, []);
 
   return (
     <div className={styles.container}>
