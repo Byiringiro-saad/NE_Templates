@@ -8,6 +8,7 @@ import Home from "./pages/home/home";
 //components
 import Start from "./components/auth/start";
 import Login from "./components/auth/login";
+import Trash from "./components/home/trash";
 import Notes from "./components/home/notes";
 import Signup from "./components/auth/signup";
 import Folder from "./components/home/folder";
@@ -27,6 +28,7 @@ function App() {
         <Route path="/home" element={<Home />}>
           <Route path="" element={<Notes />} />
           <Route path=":id" element={<Folder />} />
+          <Route path="trash" element={<Trash />} />
         </Route>
       </Routes>
     </Router>

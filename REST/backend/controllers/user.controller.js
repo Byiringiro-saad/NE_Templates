@@ -121,3 +121,19 @@ exports.info = async (req, res) => {
     },
   });
 };
+
+exports.trash = async (req, res) => {
+  try {
+    const notes = await Note.find({ user: req.user.id, trash: true });
+
+    res.status(200).json({
+      status: "success",
+      notes,
+    });
+  } catch (err) {
+    res.status(500).json({
+      status: "error",
+      message: err.message,
+    });
+  }
+};

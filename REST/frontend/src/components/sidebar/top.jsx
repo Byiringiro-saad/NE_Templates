@@ -39,9 +39,13 @@ const Top = () => {
     navigate("/home");
   };
 
+  const goToTrash = () => {
+    navigate("/home/trash");
+  };
+
   return (
     <div className={styles.container}>
-      <div className={styles.one}>
+      <div className={styles.one} onClick={goToTrash}>
         <BsTrashFill className={styles.white} />
         <p className={styles.title}>Trash</p>
         <p className={styles.num}>{trash}</p>
